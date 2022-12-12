@@ -15,17 +15,24 @@
 
           
                 <?php
-                $query = "SELECT * FROM posts";
+                if(isset($_GET['category'])){
+                    $post_category_id = $_GET['category'];
+                    echo $post_category_id;
+
+
+                $query = "SELECT * FROM posts WHERE post_category_id= $post_category_id";
                 $data =  mysqli_query($connection,$query);
+              
         
             
                 while($row = mysqli_fetch_assoc($data)){
+                    
                 $post_id = $row['post_id'];
                 $post_title = $row['post_title'];
                 $post_author = $row['post_author'];
                 $post_date = $row['post_date'];
                 $post_image = $row['post_image'];
-                $post_content =  substr($row['post_content'],0,50);    
+                $post_content = $row['post_content'];    
          
           ?> 
                      <h1 class="page-header">
@@ -51,6 +58,7 @@
                 
             <?php
                    }
+                }
         ?>
          <!-- Pager -->
                 <ul class="pager">

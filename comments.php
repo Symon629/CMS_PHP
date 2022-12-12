@@ -6,6 +6,14 @@
                     <h4>Leave a Comment:</h4>
                     <form role="form">
                         <div class="form-group">
+                            <label for="Author" class="">Author</label>
+                                <input type="text" class="form-control" name="comment_author">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="">Email</label>
+                                <input type="text" class="form-control" name="comment_emails">
+                        </div>
+                        <div class="form-group">
                             <textarea class="form-control" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
