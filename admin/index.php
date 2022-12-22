@@ -1,6 +1,9 @@
 <?php include"./includes/header.php"?>
     <div id="wrapper">
 
+  <?php  echo "<h1>{$_SESSION['username']}</h1>"?>
+
+
 
         <!-- Navigation -->
         <?php include"./includes/navigation.php"?>

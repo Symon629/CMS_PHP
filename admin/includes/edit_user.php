@@ -44,7 +44,22 @@ if(isset($_GET['edit_user'])){
         <label for="post_image">Password</label>
         <input type="text"class="form-control" name="post_content"  value="<?php echo $user_password?>">
     </div>
-    <input type="submit" name="update_post">
+    <input type="submit" name="update_user">
 </form>
 
  
+<?php
+if(isset($_POST['update_user'])){
+    $user_firstname = $_POST['user_firstname'];
+    $user_lastName = $_POST['user_lastName'];
+    $user_role = $_POST['user_role'];
+    $username = $_POST['username'];
+    $user_email = $_POST['user_email'];
+    $user_password = $_POST['user_password'];
+
+
+    $query = "UPDATE posts SET user_firstname='{$user_firstname}',user_lastName='{$user_lastName}',user_role={$user_role},username='{$username}',user_email='{$user_email}',user_password='{$user_password}' WHERE post_id={$id}";
+$update_user_query = mysqli_query($connection,$query);
+echo $update_user_query;
+confirm($update_user_query);
+}

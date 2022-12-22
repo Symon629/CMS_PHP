@@ -55,6 +55,7 @@ if(isset($_GET['change_to_admin'])){
                                 echo "<td><a href=users.php?change_to_subs={$user_id}>Subscriber</a>'</td>";
                             
                                 echo "<td><a href=users.php?delete_user={$user_id}>Delete</a>'</td>";
+                                echo "</tr>";
 
                     
                             ?>
