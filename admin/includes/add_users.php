@@ -10,7 +10,10 @@ global $connection;
     $query = "INSERT INTO users(user_firstname,user_lastName,username,user_role,user_email,user_password) VALUES('$user_firstname','$user_lastname','$username','$user_role','$user_email','$user_password')";
 $create_user_query = mysqli_query($connection,$query);
 confirm($create_user_query);
- }
+ 
+}
+
+echo "User created" . " " . "<a href ='users.php'> View Users </a> ";
 
 ?>
 <form action="" method="post" enctype="multipart/form-data">
@@ -18,17 +21,16 @@ confirm($create_user_query);
         <label for="title">Firstname</label>
         <input type="text"class="form-control" name="user_firstname">
     </div>
-
     <div class="form-group">
         <label for="post_category">Last Name</label>
         <input type="text"class="form-control" name="user_lastname">
     </div>
     <select name="user_role" id="">
         <option value="subscriber">Select any option</option>
-   <option value="admin">Admin</option>
-   <option value="subscriber">Subscriber</option>
-</select>
-<div class="form-group">
+        <option value="admin">Admin</option>
+        <option value="subscriber">Subscriber</option>
+    </select>
+    <div class="form-group">
         <label for="post_category">username</label>
         <input type="text"class="form-control" name="username">
     </div>

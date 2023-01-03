@@ -37,17 +37,15 @@ if(isset($_GET['change_to_admin'])){
             $username = $row['username'];
             $user_password = $row['user_password'];
             $user_firstname = $row['user_firstname'];
-            $user_lastName = $row['user_lastName'];
+            $user_lastname = $row['user_lastname'];
             $user_email = $row['user_email'];
             $user_role = $row['user_role'];
-            $randSalt = $row['randSalt'];	
-
-                            
+            $randSalt = $row['randSalt'];	    
                                 echo"<tr>";
                                 echo"<td>{$user_id}</td>";
                                 echo"<td>{$username}</td>";
                                 echo" <td>{$user_firstname}</td>";
-                                echo" <td>{$user_lastName}</td>";
+                                echo" <td>{$user_lastname}</td>";
                                 echo" <td>{$user_role}</td>";
                                 echo "<td>{$user_email}</td>";
                                 echo "<td><a href=users.php?source=edit_user&edit_user={$user_id}>Edit</a>'</td>";
@@ -59,21 +57,20 @@ if(isset($_GET['change_to_admin'])){
 
                     
                             ?>
-
-
                         
                            </tbody>
                         </table>
+                        <?php }?>
                         <?php
                         if(isset($_GET['delete_user'])){
                             $id = $_GET['delete_user'];
                            $query = "DELETE FROM users WHERE user_id={$id}";
-                           echo $query;
+    
                            $delete_query = mysqli_query($connection,$query);
                            confirm($delete_query);
                            header("Location:users.php");
                            
                         }
-                    }
+                 
  
                         ?>

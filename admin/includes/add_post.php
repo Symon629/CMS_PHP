@@ -22,10 +22,17 @@ $query.= "VALUES('{$post_title}','{$post_author}',{$post_category_id},'{$post_st
 
 $create_post_query = mysqli_query($connection,$query);
 confirm($create_post_query);
+
+$the_post_id = mysqli_insert_id($connection);
  }
 
 ?>
 <form action="" method="post" enctype="multipart/form-data">
+    <?php
+    if(isset($_POST['create_post'])){
+        echo" <p>Post Created successfully</p> . <a href='../post.php?p_id={$the_post_id}'>View Post</a>' ";
+    }
+   ?>
     <div class="form-group">
         <label for="title">Post Title</label>
         <input type="text"class="form-control" name="post_title">
@@ -38,6 +45,7 @@ confirm($create_post_query);
         <label for="post_category">Post Category Id</label>
         <Select name="post_category_id" id="post_category_id">
             <?php 
+
             $n_query = "SELECT * FROM categories";
             $select_categories = mysqli_query($connection,$n_query);
             while($row =mysqli_fetch_array($select_categories)){
@@ -45,19 +53,20 @@ confirm($create_post_query);
             }
 
             ?>
-
         </Select>
     </div>
-  
     <div class="form-group">
         <label for="post_status">Post Status</label>
-        <input type="text"class="form-control" name="post_status">
+        <select name="post_status">
+            <option value="published">Publish</option>
+            <option value="draft">draft</option>
+            <option value="delete">Delete</option>
+        </select>
     </div>
-    <div class="form-group">
+     <div class="form-group">
         <label for="post_tags">Post Tags</label>
         <input type="text"class="form-control" name="post_tags">
     </div>
-
     <div class="form-group">
         <label for="post_image">Post Image</label>
         <input type="file"class="form-control" name="image">

@@ -15,11 +15,7 @@ if(isset($_GET['p_id'])){
 }
 }
 
-
-
-
 ?>
-
 <form action="" method="post" enctype="multipart/form-data" >
     <div class="form-group">
         <label for="title">Post Title</label>
@@ -54,6 +50,21 @@ if(isset($_GET['p_id'])){
         <input type="text"class="form-control" name="post_status" value="<?php echo $post_status ?>">
     </div>
     <div class="form-group">
+    <select name="post_status" id="">
+        <option value='<?php echo $post_status ?>'>
+            <?php echo $post_status;?> </option>
+            <?php 
+            if($post_status == 'published'){
+                echo "<option value='draft'>Draft</option>"; 
+            }else{
+                echo "<option value='published'>Publish</option>";
+            }
+            
+            ?>
+        
+    </select>
+    </div>
+    <div class="form-group">
         <label for="post_tags">Post Tags</label>
         <input type="text"class="form-control" name="post_tags"  value="<?php echo $post_tags?>">
     </div>
@@ -76,14 +87,11 @@ if(isset($_POST['update_post'])){
     $post_author = $_POST['post_author'];
     $post_status = $_POST['post_status'];
     $post_tags = $_POST['post_tags'];
-
     $post_image = $_FILES['image']['name'];
     $post_image_temp = $_FILES['image']['tmp_name'];
-
     $post_content = $_POST['post_content'];
     $post_image = $_FILES['image']['name'];
     $post_image_temp = $_FILES['image']['tmp_name'];
-
     $query = "UPDATE posts SET post_title='{$post_title}',post_author='{$post_author}',post_category_id={$post_category_id},post_status='{$post_status}',post_tags='{$post_tags}',post_image='{$post_image}',post_content='{$post_content}' WHERE post_id={$id}";
     move_uploaded_file($post_image_temp, "../images/$post_image");
     if(empty($post_image)){
@@ -94,10 +102,10 @@ if(isset($_POST['update_post'])){
             $post_image = $row['post_image'];
         }
     }
-
 $create_post_query = mysqli_query($connection,$query);
 echo $create_post_query;
 confirm($create_post_query);
 }
+echo  "<p>Post Updated . <a href='../posts.php'>View Posts</a></p>"
 
 ?>

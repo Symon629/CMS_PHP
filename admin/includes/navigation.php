@@ -58,7 +58,7 @@
  
         <li>
  
-            <a href="catagories.php"><i class="fa fa-fw fa-table"></i> Catagories</a>
+            <a href="categories.php"><i class="fa fa-fw fa-table"></i> Catagories</a>
  
         </li>
  
@@ -93,7 +93,7 @@
  
         <li>
  
-            <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
+            <a href="profile.php"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
  
         </li>
  
